@@ -4,8 +4,8 @@ import com.tencent.bk.devops.atom.api.BaseApi
 import com.tencent.bk.devops.atom.task.exception.TurboException
 import com.tencent.bk.devops.plugin.utils.JsonUtil
 import com.tencent.bk.devops.plugin.utils.OkhttpUtils
-import okhttp3.MediaType
-import okhttp3.RequestBody
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.slf4j.LoggerFactory
 
 object TurboSdkApi: BaseApi(){
@@ -81,9 +81,7 @@ object TurboSdkApi: BaseApi(){
             method: String = "GET",
             printLog: Boolean = true
     ): String {
-        val requestBody = RequestBody.create(
-                MediaType.parse("application/json; charset=utf-8"), jsonBody
-        )
+        val requestBody = jsonBody.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
 
         val request = when (method) {
             "GET" -> {
@@ -112,10 +110,10 @@ object TurboSdkApi: BaseApi(){
 
 
         OkhttpUtils.doHttp(backendRequest).use { response ->
-            val responseBody = response.body()!!.string()
+            val responseBody = response.body!!.string()
             if (!response.isSuccessful) {
                 logger.error(
-                        "[turbo plugin] 调用接口($path), 返回信息为(${response.message()}), 返回体为($responseBody)"
+                        "[turbo plugin] 调用接口($path), 返回信息为(${response.message}), 返回体为($responseBody)"
                 )
                 throw TurboException(errorMsg = "Fail to invoke Turbo request")
             }
