@@ -33,10 +33,10 @@ BK_TURBO_PUBLIC_URL
 详细描述：  Turbo编译加速基于分布式编译、缓存、容器技术，旨在为用户提供高效、稳定、便捷的加速服务，提升研发效率。  
 发布者：Turbo  
 
-其他信息：
+其他信息：  
 ![image](https://user-images.githubusercontent.com/21979373/130024909-0f4c4e3e-1be7-4651-aef3-f768582c635b.png)
 
-logo：
+logo：  
 ![image](https://user-images.githubusercontent.com/21979373/130024979-0ca60cc1-dfac-4098-8bde-3e0b97d07b12.png)
 
 
