@@ -5,7 +5,7 @@ on:
       - 'v*'
 
 env:
-  FILENAME: turbo
+  FILENAME: Turbo
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -31,7 +31,7 @@ jobs:
         with:
           build-root-directory: src/backend/core
           gradle-version: 6.7.1
-          arguments: clean buildAndCopyZip
+          arguments: clean buildZip
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
         with:
