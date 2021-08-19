@@ -14,7 +14,8 @@
 1) 新建插件
    内容如图填写
    插件调试项目按用户实际定义，一般是常用的调试项目
-![image](https://user-images.githubusercontent.com/21979373/130023736-d6d1aa39-e82b-42b5-b819-161815dcc182.png)
+![image](https://user-images.githubusercontent.com/21979373/130041119-efe9422c-e72d-4871-8693-a0807cb6c2cb.png)
+
 
 
 
