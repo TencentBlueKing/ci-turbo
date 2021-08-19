@@ -7,7 +7,7 @@
 
 1. cd src/backend/core
 2. gradle clean buildZip
-3. 用src\backend\core\build\distributions\TurboAtom.zip上传
+3. 用src\backend\core\build\distributions\Turbo.zip上传
 
 # 配置
 

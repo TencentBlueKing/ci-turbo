@@ -1,10 +1,10 @@
 {
-  "atomCode" : "TurboAtom",
+  "atomCode" : "Turbo",
   "execution" : {
     "language" : "java",
     "minimumVersion" : "1.8",
     "demands" : [ ],
-    "target" : "java -jar TurboAtom.jar"
+    "target" : "java -jar Turbo.jar"
   },
   "input" : {
     "turboPlanId" : {
