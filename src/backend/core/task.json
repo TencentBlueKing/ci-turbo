@@ -1,0 +1,94 @@
+{
+  "atomCode" : "TurboAtom",
+  "execution" : {
+    "language" : "java",
+    "minimumVersion" : "1.8",
+    "demands" : [ ],
+    "target" : "java -jar TurboAtom.jar"
+  },
+  "input" : {
+    "turboPlanId" : {
+      "label" : "编译加速方案",
+      "placeholder" : "请选择编译加速方案……",
+      "default" : "",
+      "type" : "devops-select",
+      "desc" : "请选择在编译加速服务下创建好的加速方案",
+      "optionsConf": {
+        "searchable": true,
+        "multiple": false,
+        "url": "/turbo-new/api/user/turboPlan/list/projectId/{projectId}",
+        "paramId": "planId",
+        "paramName": "planName",
+        "hasAddItem": false
+      },
+      "required" : true
+    },
+    "turboTips" : {
+      "type" : "tips",
+      "url": "/turbo-new/api/user/turboEngineConfig/engineInfo/planId/${turboPlanId}",
+      "dataPath": "data.pluginTips"
+    },
+    "scriptFrom" : {
+      "label": "编译脚本来源",
+      "default": "FILE",
+      "type": "enum-input",
+      "required": true,
+      "isSensitive": false,
+      "list": [
+        {
+          "label": "文件",
+          "value": "FILE"
+        },
+        {
+          "label": "在线录入",
+          "value": "ONLINE"
+        }
+      ]
+    },
+    "turboScriptFile" : {
+      "label" : "编译脚本文件",
+      "default" : "",
+      "placeholder" : "请输入工作空间下的编译脚本相对路径，如 build/package.sh",
+      "type" : "vuex-input",
+      "desc" : "工作空间下的编译脚本相对路径，如 build/package.sh",
+      "required" : true,
+      "rely": {
+        "operation": "AND",
+        "expression": [
+          {
+            "key": "scriptFrom",
+            "value": "FILE"
+          }
+        ]
+      }
+    },
+    "turboScript" : {
+      "label" : "编译脚本",
+      "default" : "",
+      "placeholder" : "请输入编译脚本……",
+      "type" : "atom-ace-editor",
+      "desc" : "进行编译加速的编译脚本",
+      "required" : true,
+      "rely": {
+        "operation": "AND",
+        "expression": [
+          {
+            "key": "scriptFrom",
+            "value": "ONLINE"
+          }
+        ]
+      }
+    },
+    "continueNoneZero" : {
+      "text" : "每行命令返回码不为零时继续执行",
+      "label" : "",
+      "default" : false,
+      "type" : "atom-checkbox",
+      "desc" : "每行命令返回码不为零时继续执行",
+      "required" : false,
+      "disabled" : false,
+      "hidden" : false,
+      "isSensitive" : false
+    }
+  }
+}
