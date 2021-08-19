@@ -5,7 +5,7 @@ on:
       - 'v*'
 
 env:
-  FILENAME: Turbo
+  FILENAME: turbo
 jobs:
   # This workflow contains a single job called "build"
   build:
