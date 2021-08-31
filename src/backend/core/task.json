@@ -4,6 +4,7 @@
     "language" : "java",
     "minimumVersion" : "1.8",
     "demands" : [ ],
+    "packagePath" : "Turbo.jar",
     "target" : "java -jar Turbo.jar"
   },
   "input" : {
