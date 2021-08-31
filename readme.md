@@ -38,7 +38,8 @@ BK_TURBO_PUBLIC_URL
 ![image](https://user-images.githubusercontent.com/21979373/130024909-0f4c4e3e-1be7-4651-aef3-f768582c635b.png)
 
 logo：  
-![image](https://user-images.githubusercontent.com/21979373/130024979-0ca60cc1-dfac-4098-8bde-3e0b97d07b12.png)
+[图片]![image](https://user-images.githubusercontent.com/21979373/131462245-e03ffb04-0d9f-48c0-ab23-ded840b38597.png)
+
 
 
 
