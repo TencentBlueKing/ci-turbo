@@ -20,7 +20,7 @@
 
 
 2）需要为配置项赋值：
-BK_TURBO_PUBLIC_URL
+BK_CI_PUBLIC_URL
 ![image](https://user-images.githubusercontent.com/21979373/130024293-0b9228f3-8210-44f0-b58d-180f9afe6fd4.png)
 
 
