@@ -1,6 +1,7 @@
 package com.tencent.bk.devops.atom.task.api
 
 import com.tencent.bk.devops.atom.api.BaseApi
+import com.tencent.bk.devops.atom.api.SdkEnv
 import com.tencent.bk.devops.atom.task.exception.TurboException
 import com.tencent.bk.devops.plugin.utils.JsonUtil
 import com.tencent.bk.devops.plugin.utils.OkhttpUtils
@@ -14,17 +15,7 @@ object TurboSdkApi: BaseApi(){
     private const val turboPlanInstancePath = "/ms/turbo/api/build/turboPlanInstance"
     private const val turboPlanPath = "/ms/turbo/api/build/turboPlan/{turboPlanId}"
     private val objectMapper = JsonUtil.getObjectMapper()
-    private var rootPath: String?= null
 
-    fun init(rootPath: String){
-        if(this.rootPath.isNullOrBlank()){
-            synchronized(this){
-                if(this.rootPath.isNullOrBlank()){
-                    this.rootPath = rootPath
-                }
-            }
-        }
-    }
 
     /**
      * 创建编译加速方案实例
@@ -105,7 +96,7 @@ object TurboSdkApi: BaseApi(){
         }
 
         val backendRequest = request.newBuilder()
-                .url("$rootPath$path")
+                .url(SdkEnv.genUrl(path))
                 .build()
 
 

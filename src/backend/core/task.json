@@ -5,7 +5,7 @@
     "minimumVersion" : "1.8",
     "demands" : [ ],
     "packagePath" : "Turbo.jar",
-    "target" : "java -jar Turbo.jar"
+    "target" : "$bk_java_path -Dfile.encoding=utf8 -jar Turbo.jar"
   },
   "input" : {
     "turboPlanId" : {

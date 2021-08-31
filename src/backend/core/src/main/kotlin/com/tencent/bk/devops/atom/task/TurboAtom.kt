@@ -35,13 +35,6 @@ class TurboAtom : TaskAtom<TurboParam>{
             logger.info("=====================================================")
             logger.info("[turbo plugin] turbo compile start")
             val startTime = System.currentTimeMillis()
-            //先取插件的私有配置项，用于配置api调用根路径
-            val turboRootPath = turboParamContext.getSensitiveConfParam("BK_CI_PUBLIC_URL")
-            if(turboRootPath.isNullOrBlank()){
-                logger.error("[turbo plugin] 没有配置对应的根路径!")
-                throw TurboException(errorMsg = "no turbo root path set!")
-            }
-            TurboSdkApi.init(turboRootPath)
             val turboParam = turboParamContext.param
             if(turboParam.turboPlanId.isNullOrBlank()){
                 logger.error("[turbo plugin] 编译加速方案id未选择!")

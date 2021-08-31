@@ -16,15 +16,10 @@
    插件调试项目按用户实际定义，一般是常用的调试项目
 ![image](https://user-images.githubusercontent.com/21979373/130041119-efe9422c-e72d-4871-8693-a0807cb6c2cb.png)
 
+   
 
 
-
-2）需要为配置项赋值：
-BK_CI_PUBLIC_URL
-![image](https://user-images.githubusercontent.com/21979373/130024293-0b9228f3-8210-44f0-b58d-180f9afe6fd4.png)
-
-
-3）上架插件
+2）上架插件
 ![image](https://user-images.githubusercontent.com/21979373/130024593-8ac2ceb2-fffc-4ebf-9d2f-35dbe385486d.png)
 
 
