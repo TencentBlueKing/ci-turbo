@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory
 object TurboSdkApi: BaseApi(){
 
     private val logger = LoggerFactory.getLogger(TurboSdkApi::class.java)
-    private const val turboPlanInstancePath = "/ms/turbo-new/api/build/turboPlanInstance"
-    private const val turboPlanPath = "/ms/turbo-new/api/build/turboPlan/{turboPlanId}"
+    private const val turboPlanInstancePath = "/ms/turbo/api/build/turboPlanInstance"
+    private const val turboPlanPath = "/ms/turbo/api/build/turboPlan/{turboPlanId}"
     private val objectMapper = JsonUtil.getObjectMapper()
     private var rootPath: String?= null
 

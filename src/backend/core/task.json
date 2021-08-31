@@ -16,7 +16,7 @@
       "optionsConf": {
         "searchable": true,
         "multiple": false,
-        "url": "/turbo-new/api/user/turboPlan/list/projectId/{projectId}",
+        "url": "/turbo/api/user/turboPlan/list/projectId/{projectId}",
         "paramId": "planId",
         "paramName": "planName",
         "hasAddItem": false
@@ -25,7 +25,7 @@
     },
     "turboTips" : {
       "type" : "tips",
-      "url": "/turbo-new/api/user/turboEngineConfig/engineInfo/planId/${turboPlanId}",
+      "url": "/turbo/api/user/turboEngineConfig/engineInfo/planId/${turboPlanId}",
       "dataPath": "data.pluginTips"
     },
     "scriptFrom" : {
