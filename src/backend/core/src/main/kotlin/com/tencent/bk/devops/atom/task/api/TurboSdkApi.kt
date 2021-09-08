@@ -9,25 +9,24 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.slf4j.LoggerFactory
 
-object TurboSdkApi: BaseApi(){
+object TurboSdkApi : BaseApi() {
 
     private val logger = LoggerFactory.getLogger(TurboSdkApi::class.java)
     private const val turboPlanInstancePath = "/ms/turbo/api/build/turboPlanInstance"
     private const val turboPlanPath = "/ms/turbo/api/build/turboPlan/{turboPlanId}"
     private val objectMapper = JsonUtil.getObjectMapper()
 
-
     /**
      * 创建编译加速方案实例
      */
     fun createTurboPlanInstance(
-            projectId: String,
-            turboPlanId: String,
-            pipelineId: String,
-            pipelineElementId: String,
-            pipelineName: String,
-            buildId: String,
-            userId: String
+        projectId: String,
+        turboPlanId: String,
+        pipelineId: String,
+        pipelineElementId: String,
+        pipelineName: String,
+        buildId: String,
+        userId: String
     ): String {
         val jsonBody = objectMapper.writeValueAsString(mapOf(
                 "projectId" to projectId,
@@ -52,7 +51,7 @@ object TurboSdkApi: BaseApi(){
      * 通过编译加速方案id获取详情
      */
     fun getTurboPlanDetailById(
-            turboPlanId: String
+        turboPlanId: String
     ): String {
         val finalTurboPlanPath = turboPlanPath.replace("{turboPlanId}", turboPlanId)
         return taskExecution(
@@ -66,11 +65,11 @@ object TurboSdkApi: BaseApi(){
      */
     @Throws
     private fun taskExecution(
-            jsonBody: String = "",
-            path: String,
-            headers: MutableMap<String, String> = mutableMapOf(),
-            method: String = "GET",
-            printLog: Boolean = true
+        jsonBody: String = "",
+        path: String,
+        headers: MutableMap<String, String> = mutableMapOf(),
+        method: String = "GET",
+        printLog: Boolean = true
     ): String {
         val requestBody = jsonBody.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
 
@@ -98,7 +97,6 @@ object TurboSdkApi: BaseApi(){
         val backendRequest = request.newBuilder()
                 .url(SdkEnv.genUrl(path))
                 .build()
-
 
         OkhttpUtils.doHttp(backendRequest).use { response ->
             val responseBody = response.body!!.string()

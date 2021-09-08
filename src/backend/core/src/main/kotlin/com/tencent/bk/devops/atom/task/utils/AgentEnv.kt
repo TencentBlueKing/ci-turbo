@@ -6,12 +6,11 @@ import com.tencent.bk.devops.atom.task.pojo.BuildType
 import org.slf4j.LoggerFactory
 import java.io.File
 import java.io.FileInputStream
-import java.util.*
+import java.util.Properties
 
 object AgentEnv {
 
     private val logger = LoggerFactory.getLogger(AgentEnv::class.java)
-
 
     private var property: Properties? = null
 
@@ -68,7 +67,6 @@ object AgentEnv {
         }
         return false
     }
-
 
     fun isDockerEnv(): Boolean {
         return getBuildType() == BuildType.DOCKER.name

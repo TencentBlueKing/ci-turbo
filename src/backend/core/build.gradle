@@ -44,7 +44,7 @@ repositories {
 dependencies {
     compile "com.tencent.devops.ci-plugins:java-plugin-sdk:1.0.8"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    ktlint "com.github.shyiko:ktlint:0.34.2"
+    ktlint "com.github.shyiko:ktlint:0.31.0"
     compile group: 'com.squareup.okhttp3', name: 'okhttp'
     compile "org.bouncycastle:bcprov-jdk16:$bouncyCastleVersion"
     compile "org.apache.commons:commons-exec:$commonExecVersion"
@@ -79,7 +79,7 @@ shadowJar {
 task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
     classpath = configurations.ktlint
-    main = "com.pinterest.ktlint.Main"
+    main = "com.github.shyiko.ktlint.Main"
     args "src/**/*.kt"
 }
 check.dependsOn ktlint
@@ -87,7 +87,7 @@ check.dependsOn ktlint
 task ktlintFormat(type: JavaExec, group: "formatting") {
     description = "Fix Kotlin code style deviations."
     classpath = configurations.ktlint
-    main = "com.pinterest.ktlint.Main"
+    main = "com.github.shyiko.ktlint.Main"
     args "-F", "src/**/*.kt"
 }
 

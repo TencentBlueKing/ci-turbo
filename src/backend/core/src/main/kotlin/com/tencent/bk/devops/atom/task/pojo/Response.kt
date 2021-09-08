@@ -3,9 +3,9 @@ package com.tencent.bk.devops.atom.task.pojo
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 data class Response<out T>(
-        val code: Int,
-        val message: String? = null,
-        val data: T? = null
+    val code: Int,
+    val message: String? = null,
+    val data: T? = null
 ) {
     /**
      * 根据返回码判断是否成功
