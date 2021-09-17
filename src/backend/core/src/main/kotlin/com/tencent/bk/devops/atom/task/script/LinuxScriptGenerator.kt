@@ -33,10 +33,10 @@ class LinuxScriptGenerator(
 
         // 第三方构建机，采用public的占位符进行下载
         if (AgentEnv.isThirdParty()) {
-            scriptList.add("curl -sSf $turboPublicPath/clients/install.sh | bash -s -- -r public")
+            scriptList.add("curl -sSf http://$turboPublicPath/clients/install.sh | bash -s -- -r public")
         } else {
             // 私有构建机，采用private的占位符进行下载
-            scriptList.add("curl -sSf $turboPublicPath/clients/install.sh | bash -s -- -r private")
+            scriptList.add("curl -sSf http://$turboPublicPath/clients/install.sh | bash -s -- -r private")
         }
 
         // 根据构建环境进行不同的处理，具体如下:
