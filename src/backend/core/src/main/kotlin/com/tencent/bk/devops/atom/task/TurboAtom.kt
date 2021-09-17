@@ -40,9 +40,13 @@ class TurboAtom : TaskAtom<TurboParam> {
                         ?.replace("http://", "")?.replace("https://", "")
             val turboPrivatePath = turboParamContext.getSensitiveConfParam("BK_TURBO_PRIVATE_URL")
             ?.replace("http://", "")?.replace("https://", "")
-            if (turboPublicPath.isNullOrBlank() || turboPrivatePath.isNullOrBlank()) {
-                logger.error("[turbo plugin] 没有配置对应的根路径!")
-                throw TurboException(errorMsg = "no turbo public path or turbo private path set!")
+            if (turboPublicPath.isNullOrBlank()) {
+                logger.error("[turbo plugin] 没有配置public根路径!")
+                throw TurboException(errorMsg = "请配置BK_TURBO_PUBLIC_URL私有属性!")
+            }
+            if (turboPrivatePath.isNullOrBlank()) {
+                logger.error("[turbo plugin] 没有配置private根路径!")
+                throw TurboException(errorMsg = "请配置BK_TURBO_PRIVATE_URL私有属性!")
             }
             val turboParam = turboParamContext.param
             if (turboParam.turboPlanId.isNullOrBlank()) {
