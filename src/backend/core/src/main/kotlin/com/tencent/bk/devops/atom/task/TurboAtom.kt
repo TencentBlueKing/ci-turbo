@@ -93,6 +93,9 @@ class TurboAtom : TaskAtom<TurboParam> {
                 turboPublicPath = turboPublicPath,
                 turboPrivatePath = turboPrivatePath
             )
+            //安装客户端
+            scriptGenerator.installClient()
+            //执行前预处理
             scriptGenerator.preProcessScript(scriptList)
 
             logger.info("///////////////////////execute turbo script//////////////////////")

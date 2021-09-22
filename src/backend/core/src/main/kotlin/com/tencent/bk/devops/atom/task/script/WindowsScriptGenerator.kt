@@ -21,6 +21,10 @@ class WindowsScriptGenerator(
         private val logger = LoggerFactory.getLogger(LinuxScriptGenerator::class.java)
     }
 
+    override fun installClient() {
+        TODO("Not yet implemented")
+    }
+
     override fun preProcessScript(scriptList: MutableList<String>) {
         // 导入环境变量
         scriptList.add("set $turboPlanIdEnv=${turboParam.turboPlanId}\n")

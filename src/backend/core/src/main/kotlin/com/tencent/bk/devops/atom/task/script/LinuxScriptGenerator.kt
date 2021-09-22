@@ -9,6 +9,7 @@ import com.tencent.bk.devops.atom.task.constant.tbsBoosterTypeEnv
 import com.tencent.bk.devops.atom.task.exception.TurboException
 import com.tencent.bk.devops.atom.task.pojo.TurboParam
 import com.tencent.bk.devops.atom.task.utils.AgentEnv
+import com.tencent.bk.devops.plugin.script.ScriptUtils
 import org.slf4j.LoggerFactory
 import java.io.File
 
@@ -22,6 +23,25 @@ class LinuxScriptGenerator(
     companion object {
         private val logger = LoggerFactory.getLogger(LinuxScriptGenerator::class.java)
     }
+
+    override fun installClient() {
+        val installScript = mutableListOf<String>()
+        // 第三方构建机，采用public的占位符进行下载
+        if (AgentEnv.isThirdParty()) {
+            installScript.add("curl -sSf http://$turboPublicPath/clients/install.sh | bash -s -- -r public\n")
+        } else {
+            // 私有构建机，采用private的占位符进行下载
+            installScript.add("curl -sSf http://$turboPrivatePath/clients/install.sh | bash -s -- -r private\n")
+        }
+        ScriptUtils.execute(
+            script = installScript.joinToString(" "),
+            dir = File(turboParam.bkWorkspace),
+            prefix = "[turbo client install] ",
+            printLog = true,
+            failExit = true
+        )
+    }
+
     override fun preProcessScript(scriptList: MutableList<String>) {
         // 导入环境变量
         scriptList.add("export $turboPlanIdEnv=${turboParam.turboPlanId}\n")
@@ -30,14 +50,6 @@ class LinuxScriptGenerator(
         scriptList.add("export $tbsBuildIdEnv=${buildId}\n")
         scriptList.add("export $turboPlanBoosterTypeEnv=$engineCode\n")
         scriptList.add("export $tbsBoosterTypeEnv=$engineCode\n")
-
-        // 第三方构建机，采用public的占位符进行下载
-        if (AgentEnv.isThirdParty()) {
-            scriptList.add("curl -sSf http://$turboPublicPath/clients/install.sh | bash -s -- -r public")
-        } else {
-            // 私有构建机，采用private的占位符进行下载
-            scriptList.add("curl -sSf http://$turboPrivatePath/clients/install.sh | bash -s -- -r private")
-        }
 
         // 根据构建环境进行不同的处理，具体如下:
         if (null != turboParam.continueNoneZero && turboParam.continueNoneZero!!) {
