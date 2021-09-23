@@ -28,9 +28,11 @@ class LinuxScriptGenerator(
         val installScript = mutableListOf<String>()
         // 第三方构建机，采用public的占位符进行下载
         if (AgentEnv.isThirdParty()) {
+            logger.info("download public host: $turboPublicPath")
             installScript.add("curl -sSf http://$turboPublicPath/clients/install.sh | bash -s -- -r public\n")
         } else {
-            // 私有构建机，采用private的占位符进行下载
+            // 公共构建机，采用private的占位符进行下载
+            logger.info("download private host: $turboPrivatePath")
             installScript.add("curl -sSf http://$turboPrivatePath/clients/install.sh | bash -s -- -r private\n")
         }
         ScriptUtils.execute(
