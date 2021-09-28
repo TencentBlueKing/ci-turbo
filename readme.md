@@ -14,7 +14,8 @@
 1) 新建插件
    内容如图填写
    插件调试项目按用户实际定义，一般是常用的调试项目
-   ![image](https://user-images.githubusercontent.com/21979373/132528729-bb395b64-06ed-4def-a65b-f81a4a31e0e1.png)
+   ![image](https://user-images.githubusercontent.com/21979373/135016567-4ae757f5-ac5b-4ad5-a02b-6c6d238bdf75.png)
+
 
 2) 配置私有变量
    BK_TURBO_PUBLIC_URL及BK_TURBO_PRIVATE_URL
